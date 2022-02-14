@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Payment</title>
+</head>
+<body>
+    <button onclick="startPayment()">PAY</button>
+</body>
+<!-- --------------web3 library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0/web3.min.js"></script> 
+<script>
+    let w = new Web3(ethereum)
+    let account = []
+    async function startPayment(){
+        //console.log(ethereum.request())
+        account  = await ethereum.request({method:"eth_requestAccounts"}) // request connect metamask account
+        console.log(account)
+        pay()
+    }
+    async function pay(){
+        //console.log(w);
+        let detail = {}
+        detail.from = account[0]
+        detail.to = '0x3AD600ecA90275D98Dd81209A918cf1b220F3898' // pay to this account
+        detail.value = w.utils.toWei("0.0001") //amount to pay... 
+        let result = await w.eth.sendTransaction(detail) // send acc.no. & amount
+        console.log(result)
+        if (result === null) alert ('Error')
+        if (result !== null) alert ('Success')
+
+    }   
+</script>
+</html>
