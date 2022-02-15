@@ -1,0 +1,17 @@
+<head>
+
+</head>
+<body>
+    <h1>
+        <!-- opentag%......%closetag for cover JS syntax !-->
+        Hello Template Engine <%=tool%>
+    </h1>
+    <h2>Car Brands</h2>
+    <ul>
+        <% carBrands.map((i)=>{ %>
+                <li>
+                    <%=i%>
+                </li>
+        <% }) %>
+    </ul>
+</body>
